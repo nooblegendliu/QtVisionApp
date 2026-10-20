@@ -1,0 +1,25 @@
+SEND {"sequence":1,"version":1,"type":"queryStatus"}
+RECV {"activeTaskId":null,"applicationState":"READY","lastErrorCode":null,"sequence":1,"taskState":"IDLE","type":"statusReply","version":1,"visionState":"READY"}
+SEND {"mode":"EDGE","taskId":"1001","version":1,"type":"prepareLocate"}
+RECV {"mode":"EDGE","taskId":"1001","type":"locatePrepared","version":1}
+SEND {"sequence":1,"version":1,"type":"heartbeat"}
+RECV {"errorCode":"HARDWARE_FAILURE","message":"The simulated camera capture failed.","mode":"EDGE","outcome":"ERROR","taskId":"1001","type":"locateResult","version":1}
+SEND {"taskId":"1001","version":1,"type":"resultAck"}
+The configured first-capture failure was observed; recovering.
+SEND {"sequence":2,"version":1,"type":"recover"}
+RECV {"sequence":1,"type":"heartbeatAck","version":1}
+RECV {"outcome":"OK","sequence":2,"type":"recoverResult","version":1}
+SEND {"mode":"EDGE","taskId":"1002","version":1,"type":"prepareLocate"}
+RECV {"mode":"EDGE","taskId":"1002","type":"locatePrepared","version":1}
+SEND {"mode":"MARK_POINT","taskId":"1003","version":1,"type":"prepareLocate"}
+SEND {"sequence":3,"version":1,"type":"queryStatus"}
+RECV {"activeTaskId":"1002","errorCode":"BUSY","message":"A locate or recovery task is already active.","taskId":"1003","type":"prepareRejected","version":1}
+RECV {"activeTaskId":"1002","applicationState":"READY","lastErrorCode":null,"sequence":3,"taskState":"RUNNING","type":"statusReply","version":1,"visionState":"READY"}
+RECV {"mode":"EDGE","outcome":"OK","r":1.25,"taskId":"1002","type":"locateResult","version":1,"x":12.5,"y":-3.2}
+SEND {"taskId":"1002","version":1,"type":"resultAck"}
+SEND {"mode":"MARK_POINT","taskId":"1004","version":1,"type":"prepareLocate"}
+RECV {"mode":"MARK_POINT","taskId":"1004","type":"locatePrepared","version":1}
+SEND {"sequence":2,"version":1,"type":"heartbeat"}
+RECV {"mode":"MARK_POINT","outcome":"NG","r":0,"taskId":"1004","type":"locateResult","version":1,"x":0,"y":0}
+SEND {"taskId":"1004","version":1,"type":"resultAck"}
+Simulation TCP flow passed: status, failure/recovery, Busy, Edge OK, MarkPoint NG, heartbeat, and ACK.

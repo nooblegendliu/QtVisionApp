@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>1600</width><height>900</height></rect>
+  </property>
+  <property name="minimumSize">
+   <size><width>1280</width><height>720</height></size>
+  </property>
+  <property name="windowTitle">
+   <string>QtVisionApp 工业视觉系统</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="centralLayout">
+    <item>
+     <widget class="QGroupBox" name="statusGroupBox">
+      <property name="title"><string>运行状态</string></property>
+      <layout class="QHBoxLayout" name="statusLayout">
+       <item><widget class="QLabel" name="applicationStateCaption"><property name="text"><string>应用：</string></property></widget></item>
+       <item><widget class="QLabel" name="applicationStateValue"><property name="text"><string>启动中</string></property></widget></item>
+       <item><widget class="QLabel" name="visionStateCaption"><property name="text"><string>视觉：</string></property></widget></item>
+       <item><widget class="QLabel" name="visionStateValue"><property name="text"><string>初始化</string></property></widget></item>
+       <item><widget class="QLabel" name="tcpStateCaption"><property name="text"><string>TCP：</string></property></widget></item>
+       <item><widget class="QLabel" name="tcpStateValue"><property name="text"><string>未监听</string></property></widget></item>
+       <item><widget class="QLabel" name="taskStateCaption"><property name="text"><string>任务：</string></property></widget></item>
+       <item><widget class="QLabel" name="taskStateValue"><property name="text"><string>空闲</string></property></widget></item>
+       <item><widget class="QLabel" name="activeTaskCaption"><property name="text"><string>任务ID：</string></property></widget></item>
+       <item><widget class="QLabel" name="activeTaskValue"><property name="text"><string>—</string></property></widget></item>
+       <item><spacer name="statusSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+       <item><widget class="QPushButton" name="retryInitializationButton"><property name="text"><string>重试初始化</string></property></widget></item>
+       <item><widget class="QPushButton" name="retryTcpButton"><property name="text"><string>重试 TCP</string></property></widget></item>
+       <item><widget class="QPushButton" name="recoverVisionButton"><property name="text"><string>恢复视觉服务</string></property></widget></item>
+       <item><widget class="QPushButton" name="openMonitorButton"><property name="text"><string>打开独立监控</string></property></widget></item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="mainTabWidget">
+      <property name="currentIndex"><number>0</number></property>
+      <widget class="QWidget" name="monitorTab">
+       <attribute name="title"><string>运行监控</string></attribute>
+       <layout class="QVBoxLayout" name="monitorLayout">
+        <item>
+         <widget class="QSplitter" name="monitorSplitter">
+          <property name="orientation"><enum>Qt::Horizontal</enum></property>
+          <widget class="QGroupBox" name="imageGroupBox">
+           <property name="title"><string>采集图像</string></property>
+           <layout class="QVBoxLayout" name="imageGroupLayout">
+            <item>
+             <widget class="QStackedWidget" name="imageStack">
+              <property name="currentIndex"><number>0</number></property>
+              <widget class="QWidget" name="edgeImagePage">
+               <layout class="QVBoxLayout" name="edgeImageLayout">
+                <item><widget class="vision::app::ImageView" name="edgeImageView"/></item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="markImagePage">
+               <layout class="QGridLayout" name="markImageLayout">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="topLeftImageGroup"><property name="title"><string>TopLeft</string></property><layout class="QVBoxLayout" name="topLeftImageLayout"><item><widget class="vision::app::ImageView" name="topLeftImageView"/></item></layout></widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QGroupBox" name="topRightImageGroup"><property name="title"><string>TopRight</string></property><layout class="QVBoxLayout" name="topRightImageLayout"><item><widget class="vision::app::ImageView" name="topRightImageView"/></item></layout></widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QGroupBox" name="bottomLeftImageGroup"><property name="title"><string>BottomLeft</string></property><layout class="QVBoxLayout" name="bottomLeftImageLayout"><item><widget class="vision::app::ImageView" name="bottomLeftImageView"/></item></layout></widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QGroupBox" name="bottomRightImageGroup"><property name="title"><string>BottomRight</string></property><layout class="QVBoxLayout" name="bottomRightImageLayout"><item><widget class="vision::app::ImageView" name="bottomRightImageView"/></item></layout></widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="resultPanel">
+           <property name="minimumSize"><size><width>340</width><height>0</height></size></property>
+           <layout class="QVBoxLayout" name="resultPanelLayout">
+            <item>
+             <widget class="QGroupBox" name="resultGroupBox">
+              <property name="title"><string>最新定位结果</string></property>
+              <layout class="QFormLayout" name="resultFormLayout">
+               <item row="0" column="0"><widget class="QLabel" name="resultTaskCaption"><property name="text"><string>任务ID</string></property></widget></item>
+               <item row="0" column="1"><widget class="QLabel" name="resultTaskValue"><property name="text"><string>—</string></property><property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property></widget></item>
+               <item row="1" column="0"><widget class="QLabel" name="resultModeCaption"><property name="text"><string>定位模式</string></property></widget></item>
+               <item row="1" column="1"><widget class="QLabel" name="resultModeValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="2" column="0"><widget class="QLabel" name="resultCompletedCaption"><property name="text"><string>完成时间</string></property></widget></item>
+               <item row="2" column="1"><widget class="QLabel" name="resultCompletedValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="3" column="0"><widget class="QLabel" name="resultOutcomeCaption"><property name="text"><string>判定</string></property></widget></item>
+               <item row="3" column="1"><widget class="QLabel" name="resultOutcomeValue"><property name="text"><string>等待任务</string></property></widget></item>
+               <item row="4" column="0"><widget class="QLabel" name="resultXCaption"><property name="text"><string>X</string></property></widget></item>
+               <item row="4" column="1"><widget class="QLabel" name="resultXValue"><property name="text"><string>0.000</string></property></widget></item>
+               <item row="5" column="0"><widget class="QLabel" name="resultYCaption"><property name="text"><string>Y</string></property></widget></item>
+               <item row="5" column="1"><widget class="QLabel" name="resultYValue"><property name="text"><string>0.000</string></property></widget></item>
+               <item row="6" column="0"><widget class="QLabel" name="resultRCaption"><property name="text"><string>R</string></property></widget></item>
+               <item row="6" column="1"><widget class="QLabel" name="resultRValue"><property name="text"><string>0.000</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="resultErrorGroupBox">
+              <property name="title"><string>错误信息</string></property>
+              <layout class="QVBoxLayout" name="resultErrorLayout"><item><widget class="QLabel" name="resultErrorValue"><property name="text"><string>无</string></property><property name="wordWrap"><bool>true</bool></property><property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property></widget></item></layout>
+             </widget>
+            </item>
+            <item><widget class="QLabel" name="tcpLocateHint"><property name="text"><string>生产定位任务仅由 TCP 客户端发起。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+            <item><spacer name="resultPanelSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="visionConfigTab">
+       <attribute name="title"><string>视觉配置</string></attribute>
+       <layout class="QVBoxLayout" name="visionConfigLayout">
+        <item>
+         <widget class="QTabWidget" name="visionConfigTabs">
+          <property name="currentIndex"><number>0</number></property>
+          <widget class="QWidget" name="cameraConfigPage">
+           <attribute name="title"><string>相机</string></attribute>
+           <layout class="QVBoxLayout" name="cameraPageLayout"><item><widget class="QScrollArea" name="cameraScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="cameraScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>600</height></rect></property><layout class="QVBoxLayout" name="cameraContentLayout">
+            <item><widget class="QTableWidget" name="cameraTable"><property name="rowCount"><number>5</number></property><property name="columnCount"><number>5</number></property></widget></item>
+            <item><widget class="QGroupBox" name="triggerGroupBox"><property name="title"><string>采集与生产触发</string></property><layout class="QFormLayout" name="triggerFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="captureTimeoutCaption"><property name="text"><string>采集超时 (ms)</string></property></widget></item><item row="0" column="1"><widget class="QSpinBox" name="captureTimeoutSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>2147483647</number></property></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="triggerLineCaption"><property name="text"><string>输入线</string></property></widget></item><item row="1" column="1"><widget class="QComboBox" name="triggerLineComboBox"><item><property name="text"><string>LINE0</string></property></item><item><property name="text"><string>LINE2</string></property></item></widget></item>
+             <item row="2" column="0"><widget class="QLabel" name="triggerActivationCaption"><property name="text"><string>触发边沿</string></property></widget></item><item row="2" column="1"><widget class="QComboBox" name="triggerActivationComboBox"><item><property name="text"><string>RISING_EDGE</string></property></item><item><property name="text"><string>FALLING_EDGE</string></property></item></widget></item>
+             <item row="3" column="0"><widget class="QLabel" name="triggerDelayCaption"><property name="text"><string>触发延迟 (μs)</string></property></widget></item><item row="3" column="1"><widget class="QDoubleSpinBox" name="triggerDelaySpinBox"><property name="decimals"><number>3</number></property><property name="maximum"><double>10000000.000000000000000</double></property></widget></item>
+            </layout></widget></item>
+            <item><spacer name="cameraPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+          <widget class="QWidget" name="lightConfigPage">
+           <attribute name="title"><string>光源</string></attribute>
+           <layout class="QVBoxLayout" name="lightPageLayout"><item><widget class="QScrollArea" name="lightScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="lightScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>560</height></rect></property><layout class="QVBoxLayout" name="lightContentLayout">
+            <item><widget class="QGroupBox" name="lightControllerGroupBox"><property name="title"><string>光源控制器</string></property><layout class="QFormLayout" name="lightControllerForm"><item row="0" column="0"><widget class="QLabel" name="lightSerialCaption"><property name="text"><string>序列号</string></property></widget></item><item row="0" column="1"><widget class="QLineEdit" name="lightSerialLineEdit"/></item></layout></widget></item>
+            <item><widget class="QTableWidget" name="lightTable"><property name="rowCount"><number>4</number></property><property name="columnCount"><number>3</number></property></widget></item>
+            <item><widget class="QLabel" name="lightApplyWarning"><property name="text"><string>光源参数仅在任务空闲时通过完整运行时重建生效。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+            <item><spacer name="lightPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+          <widget class="QWidget" name="algorithmConfigPage">
+           <attribute name="title"><string>算法</string></attribute>
+           <layout class="QVBoxLayout" name="algorithmPageLayout"><item><widget class="QScrollArea" name="algorithmScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="algorithmScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>400</height></rect></property><layout class="QVBoxLayout" name="algorithmContentLayout">
+            <item><widget class="QGroupBox" name="algorithmGroupBox"><property name="title"><string>算法主配置</string></property><layout class="QFormLayout" name="algorithmFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="algorithmPathCaption"><property name="text"><string>主配置文件</string></property></widget></item>
+             <item row="0" column="1"><widget class="QWidget" name="algorithmPathRow"><layout class="QHBoxLayout" name="algorithmPathLayout"><property name="leftMargin"><number>0</number></property><property name="topMargin"><number>0</number></property><property name="rightMargin"><number>0</number></property><property name="bottomMargin"><number>0</number></property><item><widget class="QLineEdit" name="algorithmPathLineEdit"/></item><item><widget class="QPushButton" name="browseAlgorithmButton"><property name="text"><string>浏览</string></property></widget></item><item><widget class="QPushButton" name="validateAlgorithmButton"><property name="text"><string>重新校验</string></property></widget></item></layout></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="algorithmValidationCaption"><property name="text"><string>校验状态</string></property></widget></item><item row="1" column="1"><widget class="QLabel" name="algorithmValidationValue"><property name="text"><string>尚未校验</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+            </layout></widget></item>
+            <item><spacer name="algorithmPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="calibrationTab">
+       <attribute name="title"><string>相机校正</string></attribute>
+       <layout class="QVBoxLayout" name="calibrationTabLayout">
+        <property name="leftMargin"><number>0</number></property>
+        <property name="topMargin"><number>0</number></property>
+        <property name="rightMargin"><number>0</number></property>
+        <property name="bottomMargin"><number>0</number></property>
+        <item><widget class="vision::app::CalibrationWorkspace" name="calibrationWorkspace"/></item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="communicationSystemTab">
+       <attribute name="title"><string>通信与系统</string></attribute>
+       <layout class="QVBoxLayout" name="communicationSystemLayout">
+        <item>
+         <widget class="QTabWidget" name="systemConfigTabs">
+          <property name="currentIndex"><number>0</number></property>
+          <widget class="QWidget" name="tcpConfigPage">
+           <attribute name="title"><string>TCP</string></attribute>
+           <layout class="QVBoxLayout" name="tcpPageLayout"><item><widget class="QScrollArea" name="tcpScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="tcpScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>450</height></rect></property><layout class="QVBoxLayout" name="tcpContentLayout">
+            <item><widget class="QGroupBox" name="tcpGroupBox"><property name="title"><string>TCP Server</string></property><layout class="QFormLayout" name="tcpFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="tcpAddressCaption"><property name="text"><string>监听地址</string></property></widget></item><item row="0" column="1"><widget class="QLineEdit" name="tcpAddressLineEdit"/></item>
+             <item row="1" column="0"><widget class="QLabel" name="tcpPortCaption"><property name="text"><string>端口</string></property></widget></item><item row="1" column="1"><widget class="QSpinBox" name="tcpPortSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>65535</number></property></widget></item>
+             <item row="2" column="0"><widget class="QLabel" name="heartbeatTimeoutCaption"><property name="text"><string>心跳超时 (ms)</string></property></widget></item><item row="2" column="1"><widget class="QSpinBox" name="heartbeatTimeoutSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>2147483647</number></property></widget></item>
+             <item row="3" column="0"><widget class="QLabel" name="maximumFrameBytesCaption"><property name="text"><string>最大报文 (bytes)</string></property></widget></item><item row="3" column="1"><widget class="QSpinBox" name="maximumFrameBytesSpinBox"><property name="minimum"><number>256</number></property><property name="maximum"><number>2147483647</number></property></widget></item>
+            </layout></widget></item>
+            <item><widget class="QLabel" name="tcpApplyWarning"><property name="text"><string>修改 TCP 配置会断开当前客户端并重新启动监听。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+            <item><spacer name="tcpPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+          <widget class="QWidget" name="deliveryConfigPage">
+           <attribute name="title"><string>结果确认</string></attribute>
+           <layout class="QVBoxLayout" name="deliveryPageLayout"><item><widget class="QScrollArea" name="deliveryScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="deliveryScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>350</height></rect></property><layout class="QVBoxLayout" name="deliveryContentLayout">
+            <item><widget class="QGroupBox" name="deliveryGroupBox"><property name="title"><string>结果确认策略</string></property><layout class="QFormLayout" name="deliveryFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="acknowledgementIntervalCaption"><property name="text"><string>ACK 间隔 (ms)</string></property></widget></item><item row="0" column="1"><widget class="QSpinBox" name="acknowledgementIntervalSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>2147483647</number></property></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="maximumRetriesCaption"><property name="text"><string>最大重试次数</string></property></widget></item><item row="1" column="1"><widget class="QSpinBox" name="maximumRetriesSpinBox"><property name="maximum"><number>100</number></property></widget></item>
+            </layout></widget></item>
+            <item><spacer name="deliveryPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+          <widget class="QWidget" name="loggingSystemPage">
+           <attribute name="title"><string>日志与系统</string></attribute>
+           <layout class="QVBoxLayout" name="loggingSystemPageLayout"><item><widget class="QScrollArea" name="loggingSystemScrollArea"><property name="widgetResizable"><bool>true</bool></property><widget class="QWidget" name="loggingSystemScrollContent"><property name="geometry"><rect><x>0</x><y>0</y><width>900</width><height>550</height></rect></property><layout class="QVBoxLayout" name="loggingSystemContentLayout">
+            <item><widget class="QGroupBox" name="loggingGroupBox"><property name="title"><string>日志配置</string></property><layout class="QFormLayout" name="loggingFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="logDirectoryCaption"><property name="text"><string>目录</string></property></widget></item><item row="0" column="1"><widget class="QLineEdit" name="logDirectoryLineEdit"/></item>
+             <item row="1" column="0"><widget class="QLabel" name="logLevelCaption"><property name="text"><string>级别</string></property></widget></item><item row="1" column="1"><widget class="QComboBox" name="logLevelComboBox"><item><property name="text"><string>trace</string></property></item><item><property name="text"><string>debug</string></property></item><item><property name="text"><string>info</string></property></item><item><property name="text"><string>warn</string></property></item><item><property name="text"><string>error</string></property></item><item><property name="text"><string>critical</string></property></item><item><property name="text"><string>off</string></property></item></widget></item>
+             <item row="2" column="0"><widget class="QLabel" name="maximumFileMiBCaption"><property name="text"><string>单文件 (MiB)</string></property></widget></item><item row="2" column="1"><widget class="QSpinBox" name="maximumFileMiBSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>1024</number></property></widget></item>
+             <item row="3" column="0"><widget class="QLabel" name="maximumFilesCaption"><property name="text"><string>保留数量</string></property></widget></item><item row="3" column="1"><widget class="QSpinBox" name="maximumFilesSpinBox"><property name="minimum"><number>1</number></property><property name="maximum"><number>1000</number></property></widget></item>
+            </layout></widget></item>
+            <item><widget class="QGroupBox" name="systemInformationGroupBox"><property name="title"><string>系统信息</string></property><layout class="QFormLayout" name="systemInformationFormLayout">
+             <item row="0" column="0"><widget class="QLabel" name="backendCaption"><property name="text"><string>运行后端</string></property></widget></item><item row="0" column="1"><widget class="QLabel" name="backendValue"><property name="text"><string>—</string></property></widget></item>
+             <item row="1" column="0"><widget class="QLabel" name="configurationPathCaption"><property name="text"><string>配置文件</string></property></widget></item><item row="1" column="1"><widget class="QLabel" name="configurationPathValue"><property name="text"><string>—</string></property><property name="wordWrap"><bool>true</bool></property><property name="textInteractionFlags"><set>Qt::TextSelectableByMouse</set></property></widget></item>
+             <item row="2" column="0"><widget class="QLabel" name="configurationRevisionCaption"><property name="text"><string>配置修订</string></property></widget></item><item row="2" column="1"><widget class="QLabel" name="configurationRevisionValue"><property name="text"><string>1</string></property></widget></item>
+            </layout></widget></item>
+            <item><spacer name="loggingSystemPageSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>30</height></size></property></spacer></item>
+           </layout></widget></widget></item></layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="diagnosticTab">
+       <attribute name="title"><string>诊断日志</string></attribute>
+       <layout class="QVBoxLayout" name="diagnosticLayout">
+        <item><layout class="QHBoxLayout" name="diagnosticActionsLayout"><item><spacer name="diagnosticActionsSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item><item><widget class="QPushButton" name="clearDiagnosticButton"><property name="text"><string>清空显示</string></property></widget></item></layout></item>
+        <item><widget class="QPlainTextEdit" name="diagnosticTextEdit"><property name="readOnly"><bool>true</bool></property><property name="maximumBlockCount"><number>1000</number></property><property name="placeholderText"><string>运行诊断将在此显示，完整记录同时写入日志文件。</string></property></widget></item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="configurationActionBar">
+      <layout class="QHBoxLayout" name="configurationActionLayout">
+       <property name="leftMargin"><number>0</number></property>
+       <property name="topMargin"><number>0</number></property>
+       <property name="rightMargin"><number>0</number></property>
+       <property name="bottomMargin"><number>0</number></property>
+       <item><widget class="QLabel" name="dirtyStateLabel"><property name="text"><string>配置已同步</string></property></widget></item>
+       <item><spacer name="configurationActionSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+       <item><widget class="QPushButton" name="revertConfigurationButton"><property name="text"><string>撤销修改</string></property></widget></item>
+       <item><widget class="QPushButton" name="applyConfigurationButton"><property name="text"><string>应用并保存</string></property></widget></item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry"><rect><x>0</x><y>0</y><width>1600</width><height>22</height></rect></property>
+   <widget class="QMenu" name="fileMenu"><property name="title"><string>文件(&amp;F)</string></property><addaction name="exitAction"/></widget>
+   <widget class="QMenu" name="viewMenu"><property name="title"><string>视图(&amp;V)</string></property><addaction name="monitorWindowAction"/></widget>
+   <widget class="QMenu" name="serviceMenu"><property name="title"><string>服务(&amp;S)</string></property><addaction name="retryInitializationAction"/><addaction name="retryTcpAction"/><addaction name="recoverVisionAction"/></widget>
+   <addaction name="fileMenu"/><addaction name="viewMenu"/><addaction name="serviceMenu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="exitAction"><property name="text"><string>退出</string></property></action>
+  <action name="monitorWindowAction"><property name="text"><string>打开独立监控窗口</string></property></action>
+  <action name="retryInitializationAction"><property name="text"><string>重试初始化</string></property></action>
+  <action name="retryTcpAction"><property name="text"><string>重试 TCP</string></property></action>
+  <action name="recoverVisionAction"><property name="text"><string>恢复视觉服务</string></property></action>
+ </widget>
+ <customwidgets>
+  <customwidget><class>vision::app::ImageView</class><extends>QGraphicsView</extends><header>ImageView.h</header></customwidget>
+  <customwidget><class>vision::app::CalibrationWorkspace</class><extends>QWidget</extends><header>CalibrationWorkspace.h</header><container>1</container></customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

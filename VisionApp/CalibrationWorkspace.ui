@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalibrationWorkspace</class>
+ <widget class="QWidget" name="CalibrationWorkspace">
+  <property name="geometry"><rect><x>0</x><y>0</y><width>1320</width><height>720</height></rect></property>
+  <layout class="QVBoxLayout" name="workspaceLayout">
+   <property name="leftMargin"><number>0</number></property>
+   <property name="topMargin"><number>0</number></property>
+   <property name="rightMargin"><number>0</number></property>
+   <property name="bottomMargin"><number>0</number></property>
+   <item>
+    <widget class="QLabel" name="maintenanceHintLabel">
+     <property name="text"><string>校正期间应停止生产定位；激光标定点由外部系统生成。本页面不提供激光加工控制。</string></property>
+     <property name="wordWrap"><bool>true</bool></property>
+     <property name="margin"><number>6</number></property>
+     <property name="frameShape"><enum>QFrame::StyledPanel</enum></property>
+     <property name="sizePolicy"><sizepolicy hsizetype="Preferred" vsizetype="Fixed"><horstretch>0</horstretch><verstretch>0</verstretch></sizepolicy></property>
+     <property name="maximumSize"><size><width>16777215</width><height>42</height></size></property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="calibrationModeTabs">
+     <property name="currentIndex"><number>0</number></property>
+     <widget class="QWidget" name="centerCalibrationPage">
+      <attribute name="title"><string>中心相机校正</string></attribute>
+      <layout class="QVBoxLayout" name="centerPageLayout">
+       <item>
+        <layout class="QHBoxLayout" name="centerStateLayout">
+         <item><widget class="QLabel" name="centerBackendStateLabel"><property name="text"><string>后端未接入</string></property><property name="maximumSize"><size><width>16777215</width><height>24</height></size></property></widget></item>
+         <item><spacer name="centerStateSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+         <item><widget class="QLabel" name="centerPageStateLabel"><property name="text"><string>未准备：请选择理论点文件</string></property><property name="alignment"><set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set></property><property name="maximumSize"><size><width>16777215</width><height>24</height></size></property></widget></item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="centerFlowGroupBox">
+         <property name="title"><string>校正流程</string></property>
+         <property name="sizePolicy"><sizepolicy hsizetype="Preferred" vsizetype="Fixed"><horstretch>0</horstretch><verstretch>0</verstretch></sizepolicy></property>
+         <property name="maximumSize"><size><width>16777215</width><height>70</height></size></property>
+         <layout class="QHBoxLayout" name="centerFlowLayout">
+          <item><widget class="QLabel" name="centerStep1Label"><property name="text"><string>1  选择理论点</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="centerStep2Label"><property name="text"><string>2  采集图像</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="centerStep3Label"><property name="text"><string>3  检测圆心</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="centerStep4Label"><property name="text"><string>4  计算矩阵</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="centerStep5Label"><property name="text"><string>5  质量验证</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="centerStep6Label"><property name="text"><string>6  应用标定</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSplitter" name="centerCalibrationSplitter">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         <widget class="QGroupBox" name="centerImageGroupBox">
+          <property name="title"><string>Center 图像与圆心覆盖层</string></property>
+          <property name="minimumSize"><size><width>520</width><height>0</height></size></property>
+          <layout class="QVBoxLayout" name="centerImageLayout">
+           <item>
+            <layout class="QHBoxLayout" name="centerImageToolsLayout">
+             <item><widget class="QPushButton" name="centerFitImageButton"><property name="text"><string>适应窗口</string></property></widget></item>
+             <item><widget class="QPushButton" name="centerActualPixelsButton"><property name="text"><string>1:1</string></property></widget></item>
+             <item><spacer name="centerImageToolsSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item><widget class="QPushButton" name="centerToggleDataButton"><property name="text"><string>隐藏数据</string></property></widget></item>
+            </layout>
+           </item>
+           <item><widget class="vision::app::CalibrationImageView" name="centerCalibrationImageView"/></item>
+           <item><widget class="QLabel" name="centerImageHintLabel"><property name="text"><string>滚轮缩放，拖动平移，双击恢复适应窗口；检测后依次点击圆心指定 P1、P2。</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+          </layout>
+         </widget>
+         <widget class="QScrollArea" name="centerDataScrollArea">
+          <property name="widgetResizable"><bool>true</bool></property>
+          <property name="minimumSize"><size><width>360</width><height>0</height></size></property>
+          <property name="sizeAdjustPolicy"><enum>QAbstractScrollArea::AdjustIgnored</enum></property>
+          <widget class="QWidget" name="centerDataScrollContent">
+           <property name="geometry"><rect><x>0</x><y>0</y><width>425</width><height>670</height></rect></property>
+           <layout class="QVBoxLayout" name="centerDataLayout">
+            <item>
+             <widget class="QGroupBox" name="centerPointSourceGroupBox">
+              <property name="title"><string>理论点来源</string></property>
+              <layout class="QFormLayout" name="centerPointSourceForm">
+               <item row="0" column="0"><widget class="QLabel" name="centerPointPathCaption"><property name="text"><string>文件路径</string></property></widget></item>
+               <item row="0" column="1"><widget class="QLineEdit" name="centerPointPathLineEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>尚未选择</string></property></widget></item>
+               <item row="1" column="0"><widget class="QLabel" name="centerCoordinateSystemCaption"><property name="text"><string>目标坐标系</string></property></widget></item>
+               <item row="1" column="1"><widget class="QLabel" name="centerCoordinateSystemValue"><property name="text"><string>设备加工平面 XY / mm</string></property></widget></item>
+               <item row="2" column="0"><widget class="QLabel" name="centerPointValidationCaption"><property name="text"><string>内容校验</string></property></widget></item>
+               <item row="2" column="1"><widget class="QLabel" name="centerPointValidationValue"><property name="text"><string>—</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="centerPointTableGroupBox">
+              <property name="title"><string>点位对应</string></property>
+              <layout class="QVBoxLayout" name="centerPointTableLayout">
+               <item><widget class="QTableWidget" name="centerPointTable"><property name="columnCount"><number>7</number></property><property name="rowCount"><number>0</number></property><property name="minimumSize"><size><width>0</width><height>165</height></size></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="centerMatrixGroupBox">
+              <property name="title"><string>候选 image_to_physical（3×3）</string></property>
+              <layout class="QVBoxLayout" name="centerMatrixLayout">
+               <item><widget class="QTableWidget" name="centerMatrixTable"><property name="columnCount"><number>3</number></property><property name="rowCount"><number>3</number></property><property name="minimumSize"><size><width>0</width><height>116</height></size></property><property name="maximumSize"><size><width>16777215</width><height>116</height></size></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="centerQualityGroupBox">
+              <property name="title"><string>质量指标</string></property>
+              <layout class="QFormLayout" name="centerQualityForm">
+               <item row="0" column="0"><widget class="QLabel" name="centerDetectedPointsCaption"><property name="text"><string>检测点数</string></property></widget></item><item row="0" column="1"><widget class="QLabel" name="centerDetectedPointsValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="1" column="0"><widget class="QLabel" name="centerRmsCaption"><property name="text"><string>RMS 误差</string></property></widget></item><item row="1" column="1"><widget class="QLabel" name="centerRmsValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="2" column="0"><widget class="QLabel" name="centerMaximumResidualCaption"><property name="text"><string>最大误差</string></property></widget></item><item row="2" column="1"><widget class="QLabel" name="centerMaximumResidualValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="3" column="0"><widget class="QLabel" name="centerValidationPointsCaption"><property name="text"><string>采用点数</string></property></widget></item><item row="3" column="1"><widget class="QLabel" name="centerValidationPointsValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="4" column="0"><widget class="QLabel" name="centerValidationResultCaption"><property name="text"><string>质量结论</string></property></widget></item><item row="4" column="1"><widget class="QLabel" name="centerValidationResultValue"><property name="text"><string>—</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item><spacer name="centerDataSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           </layout>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="centerActionsLayout">
+         <item><widget class="QPushButton" name="centerChoosePointsButton"><property name="text"><string>选择理论点</string></property></widget></item>
+         <item><widget class="QPushButton" name="centerCaptureButton"><property name="text"><string>采集图像</string></property></widget></item>
+         <item><widget class="QPushButton" name="centerDetectButton"><property name="text"><string>检测圆心</string></property></widget></item>
+         <item><widget class="QPushButton" name="centerSolveButton"><property name="text"><string>计算矩阵</string></property></widget></item>
+         <item><widget class="QPushButton" name="centerVerifyButton"><property name="text"><string>质量验证</string></property></widget></item>
+         <item><widget class="QPushButton" name="centerApplyButton"><property name="text"><string>应用候选</string></property></widget></item>
+         <item><spacer name="centerActionSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+         <item><widget class="QPushButton" name="centerResetButton"><property name="text"><string>重置</string></property></widget></item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+
+     <widget class="QWidget" name="cornerCalibrationPage">
+      <attribute name="title"><string>四角相机校正</string></attribute>
+      <layout class="QVBoxLayout" name="cornerPageLayout">
+       <item>
+        <layout class="QHBoxLayout" name="cornerStateLayout">
+         <item><widget class="QLabel" name="cornerBackendStateLabel"><property name="text"><string>后端未接入</string></property><property name="maximumSize"><size><width>16777215</width><height>24</height></size></property></widget></item>
+         <item><spacer name="cornerStateSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+         <item><widget class="QLabel" name="cornerPageStateLabel"><property name="text"><string>未准备：请选择理论点文件</string></property><property name="alignment"><set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set></property><property name="maximumSize"><size><width>16777215</width><height>24</height></size></property></widget></item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="cornerFlowGroupBox">
+         <property name="title"><string>校正流程</string></property>
+         <property name="sizePolicy"><sizepolicy hsizetype="Preferred" vsizetype="Fixed"><horstretch>0</horstretch><verstretch>0</verstretch></sizepolicy></property>
+         <property name="maximumSize"><size><width>16777215</width><height>70</height></size></property>
+         <layout class="QHBoxLayout" name="cornerFlowLayout">
+          <item><widget class="QLabel" name="cornerStep1Label"><property name="text"><string>1  选择理论点</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="cornerStep2Label"><property name="text"><string>2  四路采集</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="cornerStep3Label"><property name="text"><string>3  检测圆心</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="cornerStep4Label"><property name="text"><string>4  计算四矩阵</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="cornerStep5Label"><property name="text"><string>5  质量验证</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>110</width><height>32</height></size></property></widget></item>
+          <item><widget class="QLabel" name="cornerStep6Label"><property name="text"><string>6  原子应用</string></property><property name="alignment"><set>Qt::AlignCenter</set></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="minimumSize"><size><width>100</width><height>32</height></size></property></widget></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSplitter" name="cornerCalibrationSplitter">
+         <property name="orientation"><enum>Qt::Horizontal</enum></property>
+         <widget class="QWidget" name="cornerImagePanel">
+          <property name="minimumSize"><size><width>620</width><height>0</height></size></property>
+          <layout class="QVBoxLayout" name="cornerImagePanelLayout">
+           <item>
+            <layout class="QHBoxLayout" name="cornerImageToolsLayout">
+             <item><widget class="QPushButton" name="cornerFitImagesButton"><property name="text"><string>全部适应</string></property></widget></item>
+             <item><widget class="QPushButton" name="cornerActualPixelsButton"><property name="text"><string>全部 1:1</string></property></widget></item>
+             <item><spacer name="cornerImageToolsSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+             <item><widget class="QPushButton" name="cornerToggleDataButton"><property name="text"><string>隐藏数据</string></property></widget></item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="cornerImageGrid">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="topLeftCalibrationGroupBox">
+             <property name="title"><string>TopLeft</string></property>
+             <layout class="QVBoxLayout" name="topLeftCalibrationLayout">
+              <item><widget class="vision::app::CalibrationImageView" name="topLeftCalibrationImageView"/></item>
+              <item><layout class="QHBoxLayout" name="topLeftInfoLayout"><item><widget class="QLabel" name="topLeftSerialLabel"><property name="text"><string>序列号：—</string></property></widget></item><item><spacer name="topLeftInfoSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item><item><widget class="QLabel" name="topLeftPointCountLabel"><property name="text"><string>点数：—</string></property></widget></item></layout></item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="topRightCalibrationGroupBox">
+             <property name="title"><string>TopRight</string></property>
+             <layout class="QVBoxLayout" name="topRightCalibrationLayout">
+              <item><widget class="vision::app::CalibrationImageView" name="topRightCalibrationImageView"/></item>
+              <item><layout class="QHBoxLayout" name="topRightInfoLayout"><item><widget class="QLabel" name="topRightSerialLabel"><property name="text"><string>序列号：—</string></property></widget></item><item><spacer name="topRightInfoSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item><item><widget class="QLabel" name="topRightPointCountLabel"><property name="text"><string>点数：—</string></property></widget></item></layout></item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="bottomLeftCalibrationGroupBox">
+             <property name="title"><string>BottomLeft</string></property>
+             <layout class="QVBoxLayout" name="bottomLeftCalibrationLayout">
+              <item><widget class="vision::app::CalibrationImageView" name="bottomLeftCalibrationImageView"/></item>
+              <item><layout class="QHBoxLayout" name="bottomLeftInfoLayout"><item><widget class="QLabel" name="bottomLeftSerialLabel"><property name="text"><string>序列号：—</string></property></widget></item><item><spacer name="bottomLeftInfoSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item><item><widget class="QLabel" name="bottomLeftPointCountLabel"><property name="text"><string>点数：—</string></property></widget></item></layout></item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QGroupBox" name="bottomRightCalibrationGroupBox">
+             <property name="title"><string>BottomRight</string></property>
+             <layout class="QVBoxLayout" name="bottomRightCalibrationLayout">
+              <item><widget class="vision::app::CalibrationImageView" name="bottomRightCalibrationImageView"/></item>
+              <item><layout class="QHBoxLayout" name="bottomRightInfoLayout"><item><widget class="QLabel" name="bottomRightSerialLabel"><property name="text"><string>序列号：—</string></property></widget></item><item><spacer name="bottomRightInfoSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>10</height></size></property></spacer></item><item><widget class="QLabel" name="bottomRightPointCountLabel"><property name="text"><string>点数：—</string></property></widget></item></layout></item>
+             </layout>
+            </widget>
+           </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QScrollArea" name="cornerDataScrollArea">
+          <property name="widgetResizable"><bool>true</bool></property>
+          <property name="minimumSize"><size><width>370</width><height>0</height></size></property>
+          <property name="sizeAdjustPolicy"><enum>QAbstractScrollArea::AdjustIgnored</enum></property>
+          <widget class="QWidget" name="cornerDataScrollContent">
+           <property name="geometry"><rect><x>0</x><y>0</y><width>425</width><height>720</height></rect></property>
+           <layout class="QVBoxLayout" name="cornerDataLayout">
+            <item>
+             <widget class="QGroupBox" name="cornerPointSourceGroupBox">
+              <property name="title"><string>各相机理论点文件</string></property>
+              <layout class="QFormLayout" name="cornerPointSourceForm">
+               <item row="0" column="0"><widget class="QLabel" name="topLeftPointPathCaption"><property name="text"><string>TopLeft</string></property></widget></item>
+               <item row="0" column="1"><layout class="QHBoxLayout" name="topLeftPointPathLayout"><item><widget class="QLineEdit" name="cornerPointPathLineEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>尚未选择</string></property></widget></item><item><widget class="QPushButton" name="topLeftChoosePointsButton"><property name="text"><string>选择</string></property></widget></item></layout></item>
+               <item row="1" column="0"><widget class="QLabel" name="topRightPointPathCaption"><property name="text"><string>TopRight</string></property></widget></item>
+               <item row="1" column="1"><layout class="QHBoxLayout" name="topRightPointPathLayout"><item><widget class="QLineEdit" name="topRightPointPathLineEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>尚未选择</string></property></widget></item><item><widget class="QPushButton" name="topRightChoosePointsButton"><property name="text"><string>选择</string></property></widget></item></layout></item>
+               <item row="2" column="0"><widget class="QLabel" name="bottomRightPointPathCaption"><property name="text"><string>BottomRight</string></property></widget></item>
+               <item row="2" column="1"><layout class="QHBoxLayout" name="bottomRightPointPathLayout"><item><widget class="QLineEdit" name="bottomRightPointPathLineEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>尚未选择</string></property></widget></item><item><widget class="QPushButton" name="bottomRightChoosePointsButton"><property name="text"><string>选择</string></property></widget></item></layout></item>
+               <item row="3" column="0"><widget class="QLabel" name="bottomLeftPointPathCaption"><property name="text"><string>BottomLeft</string></property></widget></item>
+               <item row="3" column="1"><layout class="QHBoxLayout" name="bottomLeftPointPathLayout"><item><widget class="QLineEdit" name="bottomLeftPointPathLineEdit"><property name="readOnly"><bool>true</bool></property><property name="placeholderText"><string>尚未选择</string></property></widget></item><item><widget class="QPushButton" name="bottomLeftChoosePointsButton"><property name="text"><string>选择</string></property></widget></item></layout></item>
+               <item row="4" column="0"><widget class="QLabel" name="cornerCoordinateSystemCaption"><property name="text"><string>统一坐标系</string></property></widget></item>
+               <item row="4" column="1"><widget class="QLabel" name="cornerCoordinateSystemValue"><property name="text"><string>设备加工平面 XY / mm</string></property></widget></item>
+               <item row="5" column="0"><widget class="QLabel" name="cornerRoleMappingCaption"><property name="text"><string>点集映射</string></property></widget></item>
+               <item row="5" column="1"><widget class="QLabel" name="cornerRoleMappingValue"><property name="text"><string>文件按相机角色独立绑定，行顺序为 P1～PN</string></property><property name="wordWrap"><bool>true</bool></property></widget></item>
+               <item row="6" column="0"><widget class="QLabel" name="cornerPointValidationCaption"><property name="text"><string>内容校验</string></property></widget></item>
+               <item row="6" column="1"><widget class="QLabel" name="cornerPointValidationValue"><property name="text"><string>—</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="cornerQualityGroupBox">
+              <property name="title"><string>四路质量汇总</string></property>
+              <layout class="QVBoxLayout" name="cornerQualityLayout">
+               <item><widget class="QTableWidget" name="cornerQualityTable"><property name="columnCount"><number>5</number></property><property name="rowCount"><number>4</number></property><property name="minimumSize"><size><width>0</width><height>165</height></size></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="cornerConsistencyGroupBox">
+              <property name="title"><string>四路完整性检查</string></property>
+              <layout class="QFormLayout" name="cornerConsistencyForm">
+               <item row="0" column="0"><widget class="QLabel" name="cornerCommonReferenceCaption"><property name="text"><string>角色文件</string></property></widget></item><item row="0" column="1"><widget class="QLabel" name="cornerCommonReferenceValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="1" column="0"><widget class="QLabel" name="cornerRoleMatchCaption"><property name="text"><string>角色/序列号</string></property></widget></item><item row="1" column="1"><widget class="QLabel" name="cornerRoleMatchValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="2" column="0"><widget class="QLabel" name="cornerAxisConsistencyCaption"><property name="text"><string>坐标方向</string></property></widget></item><item row="2" column="1"><widget class="QLabel" name="cornerAxisConsistencyValue"><property name="text"><string>—</string></property></widget></item>
+               <item row="3" column="0"><widget class="QLabel" name="cornerCandidateCompletenessCaption"><property name="text"><string>候选完整性</string></property></widget></item><item row="3" column="1"><widget class="QLabel" name="cornerCandidateCompletenessValue"><property name="text"><string>—</string></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="cornerCandidateGroupBox">
+              <property name="title"><string>四份候选矩阵</string></property>
+              <layout class="QVBoxLayout" name="cornerCandidateLayout">
+               <item><widget class="QTableWidget" name="cornerCandidateTable"><property name="columnCount"><number>3</number></property><property name="rowCount"><number>4</number></property><property name="minimumSize"><size><width>0</width><height>150</height></size></property></widget></item>
+              </layout>
+             </widget>
+            </item>
+            <item><widget class="QLabel" name="cornerAtomicApplyLabel"><property name="text"><string>原子应用：四份矩阵必须全部验证通过后一起应用；任何一路失败时禁止局部生效。</string></property><property name="wordWrap"><bool>true</bool></property><property name="frameShape"><enum>QFrame::StyledPanel</enum></property><property name="margin"><number>6</number></property></widget></item>
+            <item><spacer name="cornerDataSpacer"><property name="orientation"><enum>Qt::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>20</height></size></property></spacer></item>
+           </layout>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="cornerActionsLayout">
+         <item><widget class="QPushButton" name="cornerCaptureButton"><property name="text"><string>四路采集</string></property></widget></item>
+         <item><widget class="QPushButton" name="cornerDetectButton"><property name="text"><string>检测圆心</string></property></widget></item>
+         <item><widget class="QPushButton" name="cornerSolveButton"><property name="text"><string>计算四矩阵</string></property></widget></item>
+         <item><widget class="QPushButton" name="cornerVerifyButton"><property name="text"><string>质量验证</string></property></widget></item>
+         <item><widget class="QPushButton" name="cornerApplyButton"><property name="text"><string>原子应用</string></property></widget></item>
+         <item><spacer name="cornerActionSpacer"><property name="orientation"><enum>Qt::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+         <item><widget class="QPushButton" name="cornerResetButton"><property name="text"><string>重置</string></property></widget></item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget><class>vision::app::CalibrationImageView</class><extends>QGraphicsView</extends><header>CalibrationImageView.h</header></customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

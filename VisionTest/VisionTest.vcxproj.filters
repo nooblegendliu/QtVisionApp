@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include="ProductionSources" />
+    <Filter Include="include" />
+    <Filter Include="include\TestSupport" />
+    <Filter Include="source" />
+    <Filter Include="source\VisionAlgorithm" />
+    <Filter Include="source\VisionAlgorithm\Calibration" />
+    <Filter Include="source\VisionAlgorithm\Calibration\ComputeChain" />
+    <Filter Include="source\VisionAlgorithm\Calibration\ComputeChain\tests" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Creation" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Creation\tests" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Detection" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Detection\tests" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Evaluation" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Evaluation\tests" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Solve" />
+    <Filter Include="source\VisionAlgorithm\Calibration\Solve\tests" />
+    <Filter Include="source\VisionAlgorithm\Calibration\support" />
+    <Filter Include="source\VisionAlgorithm\Creation" />
+    <Filter Include="source\VisionAlgorithm\Creation\tests" />
+    <Filter Include="source\VisionAlgorithm\Edge" />
+    <Filter Include="source\VisionAlgorithm\Edge\support" />
+    <Filter Include="source\VisionAlgorithm\Edge\tests" />
+    <Filter Include="source\VisionAlgorithm\MarkGeometry" />
+    <Filter Include="source\VisionAlgorithm\MarkGeometry\tests" />
+    <Filter Include="source\VisionApp" />
+    <Filter Include="source\VisionApp\Calibration" />
+    <Filter Include="source\VisionApp\Calibration\support" />
+    <Filter Include="source\VisionApp\Calibration\tests" />
+    <Filter Include="source\VisionApp\Configuration" />
+    <Filter Include="source\VisionApp\Configuration\Runtime" />
+    <Filter Include="source\VisionApp\Configuration\Runtime\tests" />
+    <Filter Include="source\VisionApp\Configuration\tests" />
+    <Filter Include="source\VisionApp\Coordination" />
+    <Filter Include="source\VisionApp\Coordination\Lifecycle" />
+    <Filter Include="source\VisionApp\Coordination\Lifecycle\tests" />
+    <Filter Include="source\VisionApp\Coordination\Recovery" />
+    <Filter Include="source\VisionApp\Coordination\Recovery\tests" />
+    <Filter Include="source\VisionApp\Coordination\TaskDelivery" />
+    <Filter Include="source\VisionApp\Coordination\TaskDelivery\tests" />
+    <Filter Include="source\VisionApp\Coordination\support" />
+    <Filter Include="source\VisionApp\Coordination\tests" />
+    <Filter Include="source\VisionApp\Presentation" />
+    <Filter Include="source\VisionApp\Presentation\tests" />
+    <Filter Include="source\VisionApp\Ui" />
+    <Filter Include="source\VisionApp\Ui\support" />
+    <Filter Include="source\VisionApp\Ui\tests" />
+    <Filter Include="source\VisionCore" />
+    <Filter Include="source\VisionCore\Diagnostics" />
+    <Filter Include="source\VisionCore\Diagnostics\tests" />
+    <Filter Include="source\VisionCore\ImageContract" />
+    <Filter Include="source\VisionCore\ImageContract\tests" />
+    <Filter Include="source\VisionCore\Lifecycle" />
+    <Filter Include="source\VisionCore\Lifecycle\tests" />
+    <Filter Include="source\VisionCore\Locate" />
+    <Filter Include="source\VisionCore\Locate\tests" />
+    <Filter Include="source\VisionCore\support" />
+    <Filter Include="source\VisionHardware" />
+    <Filter Include="source\VisionHardware\Configuration" />
+    <Filter Include="source\VisionHardware\Configuration\tests" />
+    <Filter Include="source\VisionHardware\Environment" />
+    <Filter Include="source\VisionHardware\Environment\tests" />
+    <Filter Include="source\VisionHardware\support" />
+    <Filter Include="source\VisionTcp" />
+    <Filter Include="source\VisionTcp\Protocol" />
+    <Filter Include="source\VisionTcp\Protocol\tests" />
+    <Filter Include="source\VisionTcp\Replies" />
+    <Filter Include="source\VisionTcp\Replies\tests" />
+    <Filter Include="source\VisionTcp\Session" />
+    <Filter Include="source\VisionTcp\Session\tests" />
+    <Filter Include="source\VisionTcp\support" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="..\VisionApp\ApplicationController.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <QtMoc Include="..\VisionApp\DiagnosticBridge.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <QtMoc Include="..\VisionApp\VisionWorker.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <ClCompile Include="..\VisionApp\AppConfig.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\ApplicationController.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\CalibrationServices.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\ConfigurationService.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\DiagnosticBridge.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\Logging.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\ProtocolMapper.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\VisionWorker.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\MainWindow.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\ImageView.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\CalibrationWorkspace.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\CalibrationImageView.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <QtMoc Include="..\VisionApp\MainWindow.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <ClInclude Include="..\VisionApp\ImageView.h">
+      <Filter>ProductionSources</Filter>
+    </ClInclude>
+    <QtMoc Include="..\VisionApp\CalibrationWorkspace.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <QtMoc Include="..\VisionApp\CalibrationImageView.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <QtUic Include="..\VisionApp\MainWindow.ui">
+      <Filter>ProductionSources</Filter>
+    </QtUic>
+    <QtUic Include="..\VisionApp\CalibrationWorkspace.ui">
+      <Filter>ProductionSources</Filter>
+    </QtUic>
+    <ClCompile Include="..\VisionApp\WindowCoordinator.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\MonitorWindow.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\SimulationRuntimeFactory.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\FileRuntimeFactory.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\VisionApp\VisionRuntimeFactory.cpp">
+      <Filter>ProductionSources</Filter>
+    </ClCompile>
+    <QtMoc Include="..\VisionApp\MonitorWindow.h">
+      <Filter>ProductionSources</Filter>
+    </QtMoc>
+    <QtUic Include="..\VisionApp\MonitorWindow.ui">
+      <Filter>ProductionSources</Filter>
+    </QtUic>
+    <ClCompile Include="source\VisionAlgorithm\Calibration\ComputeChain\tests\ComputeChainBehaviorTests.cpp">
+      <Filter>source\VisionAlgorithm\Calibration\ComputeChain\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Creation\tests\CreationBehaviorTests.cpp">
+      <Filter>source\VisionAlgorithm\Calibration\Creation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Detection\tests\DetectionBehaviorTests.cpp">
+      <Filter>source\VisionAlgorithm\Calibration\Detection\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Evaluation\tests\EvaluationBehaviorTests.cpp">
+      <Filter>source\VisionAlgorithm\Calibration\Evaluation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Solve\tests\SolveBehaviorTests.cpp">
+      <Filter>source\VisionAlgorithm\Calibration\Solve\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionAlgorithm\Calibration\support\CalibrationScenario.h">
+      <Filter>source\VisionAlgorithm\Calibration\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\DemoEdgeVisualizationStoreTests.cpp">
+      <Filter>source\VisionAlgorithm\Creation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\VisionAlgorithmCreationTests.cpp">
+      <Filter>source\VisionAlgorithm\Creation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\VisionAlgorithmPublicApiTests.cpp">
+      <Filter>source\VisionAlgorithm\Creation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Edge\support\EdgePipelineTestSupport.cpp">
+      <Filter>source\VisionAlgorithm\Edge\support</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionAlgorithm\Edge\support\EdgePipelineTestSupport.h">
+      <Filter>source\VisionAlgorithm\Edge\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgeGeometryTests.cpp">
+      <Filter>source\VisionAlgorithm\Edge\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgePipelineTests.cpp">
+      <Filter>source\VisionAlgorithm\Edge\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgeQualityTests.cpp">
+      <Filter>source\VisionAlgorithm\Edge\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkGeometryTests.cpp">
+      <Filter>source\VisionAlgorithm\MarkGeometry\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkQualityTests.cpp">
+      <Filter>source\VisionAlgorithm\MarkGeometry\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkResourceValidationTests.cpp">
+      <Filter>source\VisionAlgorithm\MarkGeometry\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionApp\Calibration\support\CalibrationRuntime.h">
+      <Filter>source\VisionApp\Calibration\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionApp\Calibration\tests\CalibrationServicesTests.cpp">
+      <Filter>source\VisionApp\Calibration\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Calibration\tests\CalibrationWorkflowTests.cpp">
+      <Filter>source\VisionApp\Calibration\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Configuration\Runtime\tests\RuntimeBehaviorTests.cpp">
+      <Filter>source\VisionApp\Configuration\Runtime\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Configuration\tests\AppConfigTests.cpp">
+      <Filter>source\VisionApp\Configuration\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Coordination\Lifecycle\tests\LifecycleBehaviorTests.cpp">
+      <Filter>source\VisionApp\Coordination\Lifecycle\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Coordination\Recovery\tests\RecoveryBehaviorTests.cpp">
+      <Filter>source\VisionApp\Coordination\Recovery\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionApp\Coordination\support\ControllerScenario.h">
+      <Filter>source\VisionApp\Coordination\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionApp\Coordination\TaskDelivery\tests\TaskDeliveryBehaviorTests.cpp">
+      <Filter>source\VisionApp\Coordination\TaskDelivery\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Coordination\tests\SimulationAndSnapshotsTests.cpp">
+      <Filter>source\VisionApp\Coordination\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Coordination\tests\FileRuntimeFactoryTests.cpp">
+      <Filter>source\VisionApp\Coordination\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Presentation\tests\DiagnosticBridgeTests.cpp">
+      <Filter>source\VisionApp\Presentation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Presentation\tests\LoggingTests.cpp">
+      <Filter>source\VisionApp\Presentation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Presentation\tests\ProtocolMapperTests.cpp">
+      <Filter>source\VisionApp\Presentation\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Ui\support\CalibrationUiTestEnvironment.cpp">
+      <Filter>source\VisionApp\Ui\support</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Ui\support\CalibrationUiTestSupport.cpp">
+      <Filter>source\VisionApp\Ui\support</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionApp\Ui\support\CalibrationUiTestSupport.h">
+      <Filter>source\VisionApp\Ui\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationCompletionTests.cpp">
+      <Filter>source\VisionApp\Ui\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationUiInteractiveTests.cpp">
+      <Filter>source\VisionApp\Ui\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationUiSelectionTests.cpp">
+      <Filter>source\VisionApp\Ui\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionApp\Ui\tests\ConfigurationAndWindowsTests.cpp">
+      <Filter>source\VisionApp\Ui\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Diagnostics\tests\VisionCoreDiagnosticsTests.cpp">
+      <Filter>source\VisionCore\Diagnostics\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Diagnostics\tests\VisionCoreFrameObserverTests.cpp">
+      <Filter>source\VisionCore\Diagnostics\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\ImageContract\tests\VisionCoreImageContractTests.cpp">
+      <Filter>source\VisionCore\ImageContract\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Lifecycle\tests\VisionCoreLifecycleTests.cpp">
+      <Filter>source\VisionCore\Lifecycle\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Lifecycle\tests\VisionCoreStateTests.cpp">
+      <Filter>source\VisionCore\Lifecycle\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Locate\tests\CalibrationCaptureTests.cpp">
+      <Filter>source\VisionCore\Locate\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreErrorTests.cpp">
+      <Filter>source\VisionCore\Locate\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreExceptionTests.cpp">
+      <Filter>source\VisionCore\Locate\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreLocateTests.cpp">
+      <Filter>source\VisionCore\Locate\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionCore\support\CoreAssertions.h">
+      <Filter>source\VisionCore\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionCore\support\CoreTestData.cpp">
+      <Filter>source\VisionCore\support</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionCore\support\CoreTestData.h">
+      <Filter>source\VisionCore\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionCore\support\CoreTestDoubles.cpp">
+      <Filter>source\VisionCore\support</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionCore\support\CoreTestDoubles.h">
+      <Filter>source\VisionCore\support</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisionCore\support\OutcomeAssertions.h">
+      <Filter>source\VisionCore\support</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VisionCore\support\VisionCoreFixture.h">
+      <Filter>source\VisionCore\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionHardware\Configuration\tests\HikCameraSystemTests.cpp">
+      <Filter>source\VisionHardware\Configuration\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionHardware\Configuration\tests\HikLightControllerConfigTests.cpp">
+      <Filter>source\VisionHardware\Configuration\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionHardware\Environment\tests\HikMvsEnvironmentSmokeTests.cpp">
+      <Filter>source\VisionHardware\Environment\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionHardware\support\HikHardwareTestConfig.h">
+      <Filter>source\VisionHardware\support</Filter>
+    </ClInclude>
+    <ClCompile Include="source\VisionTcp\Protocol\tests\VisionTcpCodecTests.cpp">
+      <Filter>source\VisionTcp\Protocol\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionTcp\Replies\tests\VisionTcpRepliesTests.cpp">
+      <Filter>source\VisionTcp\Replies\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VisionTcp\Session\tests\VisionTcpSessionTests.cpp">
+      <Filter>source\VisionTcp\Session\tests</Filter>
+    </ClCompile>
+    <ClInclude Include="source\VisionTcp\support\VisionTcpServerFixture.h">
+      <Filter>source\VisionTcp\support</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TestSupport\QtEventLoopTestSupport.h">
+      <Filter>include\TestSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TestSupport\QtTcpTestSupport.h">
+      <Filter>include\TestSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TestSupport\TestDirectory.h">
+      <Filter>include\TestSupport</Filter>
+    </ClInclude>
+    <None Include="AGENTS.md" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+    <None Include="COVERAGE.md" />
+    <None Include="DEFECTS.md" />
+    <None Include="VALIDATION.md" />
+    <None Include="run_tests.ps1" />
+    <None Include="audit_project.ps1" />
+    <None Include="run_calibration_ui.ps1" />
+    <None Include="CALIBRATION_UI_TESTS.md" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="VisionAlgorithm/VisionAlgorithm.vcxproj" Id="0c399805-12fe-44a1-ac72-a9a681251355" />
+  <Project Path="VisionApp/VisionApp.vcxproj" Id="7782f3a5-096a-4b83-b13f-d99d112c18a5">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="VisionCore/VisionCore.vcxproj" Id="6a783953-7d3f-4517-8508-6968d0f3ba07" />
+  <Project Path="VisionHardware/VisionHardware.vcxproj" Id="0e3ee56a-c487-40f3-a0ce-fd26227b8135" />
+  <Project Path="VisionTcp/VisionTcp.vcxproj" Id="38d5cd51-7059-4432-942d-525228dde2a0">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="VisionTest/VisionTest.vcxproj" Id="d12badaf-4c12-483e-a075-7d82596f5022" />
+</Solution>

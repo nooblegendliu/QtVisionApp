@@ -1,0 +1,100 @@
+%YAML:1.0
+---
+# Offline configuration for test_cast_.png; pixel coordinates only.
+edges:
+  top:
+    first:
+      center_px: [ 250.0, 94.0 ]
+      scan_angle_deg: 90.0
+      search_length_px: 90.0
+      span_length_px: 210.0
+      sample_count: 32
+      polarity: "light_to_dark"
+    second:
+      center_px: [ 800.0, 98.0 ]
+      scan_angle_deg: 90.0
+      search_length_px: 90.0
+      span_length_px: 210.0
+      sample_count: 32
+      polarity: "light_to_dark"
+  right:
+    first:
+      center_px: [ 1018.0, 156.0 ]
+      scan_angle_deg: 180.0
+      search_length_px: 80.0
+      span_length_px: 60.0
+      sample_count: 32
+      polarity: "light_to_dark"
+    second:
+      center_px: [ 1004.0, 503.0 ]
+      scan_angle_deg: 180.0
+      search_length_px: 80.0
+      span_length_px: 70.0
+      sample_count: 32
+      polarity: "light_to_dark"
+  bottom:
+    first:
+      center_px: [ 260.0, 575.0 ]
+      scan_angle_deg: -90.0
+      search_length_px: 80.0
+      span_length_px: 210.0
+      sample_count: 32
+      polarity: "light_to_dark"
+    second:
+      center_px: [ 820.0, 565.0 ]
+      scan_angle_deg: -90.0
+      search_length_px: 80.0
+      span_length_px: 210.0
+      sample_count: 32
+      polarity: "light_to_dark"
+  left:
+    first:
+      center_px: [ 49.0, 220.0 ]
+      scan_angle_deg: 0.0
+      search_length_px: 70.0
+      span_length_px: 140.0
+      sample_count: 32
+      polarity: "light_to_dark"
+    second:
+      center_px: [ 60.0, 455.0 ]
+      scan_angle_deg: 0.0
+      search_length_px: 70.0
+      span_length_px: 140.0
+      sample_count: 32
+      polarity: "light_to_dark"
+caliper:
+  smoothing_kernel_size: 5
+  minimum_gradient: 20.0
+  enable_subpixel: 1
+  minimum_points_per_roi: 12
+
+# 长度和中心偏移使用 image_to_physical 输出坐标的单位。
+# 当前占位标定为单位矩阵，因此数值暂时与像素一致。
+# 第一阶段先使用宽范围跑通流程，相机和合格片数据齐备后再收紧。
+quality:
+  edge_mode:
+    top_length:
+      lower: 0.0
+      upper: 1000000000.0
+    right_length:
+      lower: 0.0
+      upper: 1000000000.0
+    bottom_length:
+      lower: 0.0
+      upper: 1000000000.0
+    left_length:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_left_to_bottom_right:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_right_to_bottom_left:
+      lower: 0.0
+      upper: 1000000000.0
+
+  offset_result:
+    absolute_angle_deg:
+      lower: 0.0
+      upper: 90.0
+    maximum_center_offset: 1000000000.0
+

@@ -1,0 +1,22 @@
+%YAML:1.0
+---
+# Example only. Replace every calibration matrix before production use.
+timeout_ms: 500
+
+enabled_algorithms:
+  edge: 1
+  mark: 0
+
+calibration:
+  parameters: "parameters/calibration.example.yaml"
+  center: "calibration/center.example.yaml"
+  top_left: "calibration/top_left.example.yaml"
+  top_right: "calibration/top_right.example.yaml"
+  bottom_right: "calibration/bottom_right.example.yaml"
+  bottom_left: "calibration/bottom_left.example.yaml"
+
+edge:
+  parameters: "parameters/edge.example.yaml"
+
+mark:
+  parameters: "parameters/mark_point.example.yaml"

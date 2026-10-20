@@ -1,0 +1,113 @@
+%YAML:1.0
+---
+
+edges:
+  # 顶边无机械臂投影，两个ROI避开左右倒角
+  top:
+    first:
+      center_px: [ 1400.0, 860.0 ]
+      scan_angle_deg: 90.0
+      search_length_px: 420.0
+      span_length_px: 700.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+    second:
+      center_px: [ 3720.0, 860.0 ]
+      scan_angle_deg: 90.0
+      search_length_px: 420.0
+      span_length_px: 700.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+  # 右侧中间存在横向机械臂投影
+  # 两个ROI分别放在投影上方和下方，并避开右侧倒角
+  right:
+    first:
+      center_px: [ 4660.0, 1600.0 ]
+      scan_angle_deg: 180.0
+      search_length_px: 420.0
+      span_length_px: 520.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+    second:
+      center_px: [ 4660.0, 3540.0 ]
+      scan_angle_deg: 180.0
+      search_length_px: 420.0
+      span_length_px: 520.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+  # 底边中间存在竖向机械臂投影
+  # 两个ROI分别放在投影左侧和右侧，并避开底部倒角
+  bottom:
+    first:
+      center_px: [ 1400.0, 4260.0 ]
+      scan_angle_deg: -90.0
+      search_length_px: 420.0
+      span_length_px: 700.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+    second:
+      center_px: [ 3720.0, 4260.0 ]
+      scan_angle_deg: -90.0
+      search_length_px: 420.0
+      span_length_px: 700.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+  # 左边无机械臂投影，两个ROI避开上下倒角
+  left:
+    first:
+      center_px: [ 460.0, 1600.0 ]
+      scan_angle_deg: 0.0
+      search_length_px: 420.0
+      span_length_px: 520.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+    second:
+      center_px: [ 460.0, 3540.0 ]
+      scan_angle_deg: 0.0
+      search_length_px: 420.0
+      span_length_px: 520.0
+      sample_count: 32
+      polarity: "light_to_dark"
+
+caliper:
+  smoothing_kernel_size: 5
+  minimum_gradient: 20.0
+  enable_subpixel: 1
+  minimum_points_per_roi: 12
+
+# 长度和中心偏移使用 image_to_physical 输出坐标的单位。
+# 当前占位标定为单位矩阵，因此数值暂时与像素一致。
+# 第一阶段先使用宽范围跑通流程，相机和合格片数据齐备后再收紧。
+quality:
+  edge_mode:
+    top_length:
+      lower: 0.0
+      upper: 1000000000.0
+    right_length:
+      lower: 0.0
+      upper: 1000000000.0
+    bottom_length:
+      lower: 0.0
+      upper: 1000000000.0
+    left_length:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_left_to_bottom_right:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_right_to_bottom_left:
+      lower: 0.0
+      upper: 1000000000.0
+
+  offset_result:
+    absolute_angle_deg:
+      lower: 0.0
+      upper: 90.0
+    maximum_center_offset: 1000000000.0

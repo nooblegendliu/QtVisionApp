@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" ToolsVersion="15.0">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{d12badaf-4c12-483e-a075-7d82596f5022}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\..\VisionApp\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="QtSettings">
+    <QtInstall>6.11.1_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets;network;testlib</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+    <QMakeExtraArgs>"QMAKE_CXX.COMPILER_MACROS=QT_COMPILER_STDCXX QMAKE_MSC_VER QMAKE_MSC_FULL_VER" QMAKE_CXX.QT_COMPILER_STDCXX=202002L QMAKE_CXX.QMAKE_MSC_VER=1950 QMAKE_CXX.QMAKE_MSC_FULL_VER=195000000</QMakeExtraArgs>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="QtSettings">
+    <QtInstall>6.11.1_msvc2022_64</QtInstall>
+    <QtModules>core;gui;widgets;network;testlib</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+    <QMakeExtraArgs>"QMAKE_CXX.COMPILER_MACROS=QT_COMPILER_STDCXX QMAKE_MSC_VER QMAKE_MSC_FULL_VER" QMAKE_CXX.QT_COMPILER_STDCXX=202002L QMAKE_CXX.QMAKE_MSC_VER=1950 QMAKE_CXX.QMAKE_MSC_FULL_VER=195000000</QMakeExtraArgs>
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="..\OpenCV.props" />
+    <Import Project="..\VisionHardware\HIKSDK.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+    <Import Project="..\OpenCV.props" />
+    <Import Project="..\VisionHardware\HIKSDK.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)x64\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)x64\$(Configuration)\obj\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)source;$(ProjectDir)..\VisionCore\include;$(ProjectDir)..\VisionAlgorithm\include;$(ProjectDir)..\VisionAlgorithm\source;$(ProjectDir)..\VisionAlgorithm\extend;$(ProjectDir)..\VisionHardware\include;$(ProjectDir)..\VisionHardware\source;$(ProjectDir)..\VisionTcp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\VisionApp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>X64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\VisionApp;$(ProjectDir)include;$(ProjectDir)source;$(ProjectDir)..\VisionCore\include;$(ProjectDir)..\VisionAlgorithm\include;$(ProjectDir)..\VisionAlgorithm\source;$(ProjectDir)..\VisionAlgorithm\extend;$(ProjectDir)..\VisionHardware\include;$(ProjectDir)..\VisionHardware\source;$(ProjectDir)..\VisionTcp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>X64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisionCore\VisionCore.vcxproj">
+      <Project>{6a783953-7d3f-4517-8508-6968d0f3ba07}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\VisionAlgorithm\VisionAlgorithm.vcxproj">
+      <Project>{0c399805-12fe-44a1-ac72-a9a681251355}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\VisionHardware\VisionHardware.vcxproj">
+      <Project>{0e3ee56a-c487-40f3-a0ce-fd26227b8135}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\VisionTcp\VisionTcp.vcxproj">
+      <Project>{38d5cd51-7059-4432-942d-525228dde2a0}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <Import Project="..\QtReleaseDeploy.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.8\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets" Condition="Exists('..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.8\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.8\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.1.8.1.8\build\native\Microsoft.googletest.v140.windesktop.msvcstl.static.rt-dyn.targets'))" />
+  </Target>
+  <ItemGroup>
+    <QtMoc Include="..\VisionApp\ApplicationController.h" />
+    <QtMoc Include="..\VisionApp\DiagnosticBridge.h" />
+    <QtMoc Include="..\VisionApp\VisionWorker.h" />
+    <ClCompile Include="..\VisionApp\AppConfig.cpp" />
+    <ClCompile Include="..\VisionApp\ApplicationController.cpp" />
+    <ClCompile Include="..\VisionApp\CalibrationServices.cpp" />
+    <ClCompile Include="..\VisionApp\ConfigurationService.cpp" />
+    <ClCompile Include="..\VisionApp\DiagnosticBridge.cpp" />
+    <ClCompile Include="..\VisionApp\Logging.cpp" />
+    <ClCompile Include="..\VisionApp\ProtocolMapper.cpp" />
+    <ClCompile Include="..\VisionApp\VisionWorker.cpp" />
+    <ClCompile Include="..\VisionApp\MainWindow.cpp" />
+    <ClCompile Include="..\VisionApp\ImageView.cpp" />
+    <ClCompile Include="..\VisionApp\CalibrationWorkspace.cpp" />
+    <ClCompile Include="..\VisionApp\CalibrationImageView.cpp" />
+    <QtMoc Include="..\VisionApp\MainWindow.h" />
+    <ClInclude Include="..\VisionApp\ImageView.h" />
+    <QtMoc Include="..\VisionApp\CalibrationWorkspace.h" />
+    <QtMoc Include="..\VisionApp\CalibrationImageView.h" />
+    <QtUic Include="..\VisionApp\MainWindow.ui" />
+    <QtUic Include="..\VisionApp\CalibrationWorkspace.ui" />
+    <ClCompile Include="..\VisionApp\WindowCoordinator.cpp" />
+    <ClCompile Include="..\VisionApp\MonitorWindow.cpp" />
+    <ClCompile Include="..\VisionApp\SimulationRuntimeFactory.cpp" />
+    <ClCompile Include="..\VisionApp\FileRuntimeFactory.cpp" />
+    <ClCompile Include="..\VisionApp\VisionRuntimeFactory.cpp" />
+    <QtMoc Include="..\VisionApp\MonitorWindow.h" />
+    <QtUic Include="..\VisionApp\MonitorWindow.ui" />
+    <ClCompile Include="source\VisionAlgorithm\Calibration\ComputeChain\tests\ComputeChainBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Creation\tests\CreationBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Detection\tests\DetectionBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Evaluation\tests\EvaluationBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Calibration\Solve\tests\SolveBehaviorTests.cpp" />
+    <ClInclude Include="source\VisionAlgorithm\Calibration\support\CalibrationScenario.h" />
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\DemoEdgeVisualizationStoreTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\VisionAlgorithmCreationTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Creation\tests\VisionAlgorithmPublicApiTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Edge\support\EdgePipelineTestSupport.cpp" />
+    <ClInclude Include="source\VisionAlgorithm\Edge\support\EdgePipelineTestSupport.h" />
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgeGeometryTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgePipelineTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\Edge\tests\EdgeQualityTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkGeometryTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkQualityTests.cpp" />
+    <ClCompile Include="source\VisionAlgorithm\MarkGeometry\tests\MarkResourceValidationTests.cpp" />
+    <ClInclude Include="source\VisionApp\Calibration\support\CalibrationRuntime.h" />
+    <ClCompile Include="source\VisionApp\Calibration\tests\CalibrationServicesTests.cpp" />
+    <ClCompile Include="source\VisionApp\Calibration\tests\CalibrationWorkflowTests.cpp" />
+    <ClCompile Include="source\VisionApp\Configuration\Runtime\tests\RuntimeBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionApp\Configuration\tests\AppConfigTests.cpp" />
+    <ClCompile Include="source\VisionApp\Coordination\Lifecycle\tests\LifecycleBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionApp\Coordination\Recovery\tests\RecoveryBehaviorTests.cpp" />
+    <ClInclude Include="source\VisionApp\Coordination\support\ControllerScenario.h" />
+    <ClCompile Include="source\VisionApp\Coordination\TaskDelivery\tests\TaskDeliveryBehaviorTests.cpp" />
+    <ClCompile Include="source\VisionApp\Coordination\tests\SimulationAndSnapshotsTests.cpp" />
+    <ClCompile Include="source\VisionApp\Coordination\tests\FileRuntimeFactoryTests.cpp" />
+    <ClCompile Include="source\VisionApp\Presentation\tests\DiagnosticBridgeTests.cpp" />
+    <ClCompile Include="source\VisionApp\Presentation\tests\LoggingTests.cpp" />
+    <ClCompile Include="source\VisionApp\Presentation\tests\ProtocolMapperTests.cpp" />
+    <ClCompile Include="source\VisionApp\Ui\support\CalibrationUiTestEnvironment.cpp" />
+    <ClCompile Include="source\VisionApp\Ui\support\CalibrationUiTestSupport.cpp" />
+    <ClInclude Include="source\VisionApp\Ui\support\CalibrationUiTestSupport.h" />
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationCompletionTests.cpp" />
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationUiInteractiveTests.cpp" />
+    <ClCompile Include="source\VisionApp\Ui\tests\CalibrationUiSelectionTests.cpp" />
+    <ClCompile Include="source\VisionApp\Ui\tests\ConfigurationAndWindowsTests.cpp" />
+    <ClCompile Include="source\VisionCore\Diagnostics\tests\VisionCoreDiagnosticsTests.cpp" />
+    <ClCompile Include="source\VisionCore\Diagnostics\tests\VisionCoreFrameObserverTests.cpp" />
+    <ClCompile Include="source\VisionCore\ImageContract\tests\VisionCoreImageContractTests.cpp" />
+    <ClCompile Include="source\VisionCore\Lifecycle\tests\VisionCoreLifecycleTests.cpp" />
+    <ClCompile Include="source\VisionCore\Lifecycle\tests\VisionCoreStateTests.cpp" />
+    <ClCompile Include="source\VisionCore\Locate\tests\CalibrationCaptureTests.cpp" />
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreErrorTests.cpp" />
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreExceptionTests.cpp" />
+    <ClCompile Include="source\VisionCore\Locate\tests\VisionCoreLocateTests.cpp" />
+    <ClInclude Include="source\VisionCore\support\CoreAssertions.h" />
+    <ClCompile Include="source\VisionCore\support\CoreTestData.cpp" />
+    <ClInclude Include="source\VisionCore\support\CoreTestData.h" />
+    <ClCompile Include="source\VisionCore\support\CoreTestDoubles.cpp" />
+    <ClInclude Include="source\VisionCore\support\CoreTestDoubles.h" />
+    <ClInclude Include="source\VisionCore\support\OutcomeAssertions.h" />
+    <ClInclude Include="source\VisionCore\support\VisionCoreFixture.h" />
+    <ClCompile Include="source\VisionHardware\Configuration\tests\HikCameraSystemTests.cpp" />
+    <ClCompile Include="source\VisionHardware\Configuration\tests\HikLightControllerConfigTests.cpp" />
+    <ClCompile Include="source\VisionHardware\Environment\tests\HikMvsEnvironmentSmokeTests.cpp" />
+    <ClInclude Include="source\VisionHardware\support\HikHardwareTestConfig.h" />
+    <ClCompile Include="source\VisionTcp\Protocol\tests\VisionTcpCodecTests.cpp" />
+    <ClCompile Include="source\VisionTcp\Replies\tests\VisionTcpRepliesTests.cpp" />
+    <ClCompile Include="source\VisionTcp\Session\tests\VisionTcpSessionTests.cpp" />
+    <ClInclude Include="source\VisionTcp\support\VisionTcpServerFixture.h" />
+    <ClInclude Include="include\TestSupport\QtEventLoopTestSupport.h" />
+    <ClInclude Include="include\TestSupport\QtTcpTestSupport.h" />
+    <ClInclude Include="include\TestSupport\TestDirectory.h" />
+    <None Include="AGENTS.md" />
+    <None Include="packages.config" />
+    <None Include="README.md" />
+    <None Include="COVERAGE.md" />
+    <None Include="DEFECTS.md" />
+    <None Include="VALIDATION.md" />
+    <None Include="run_tests.ps1" />
+    <None Include="audit_project.ps1" />
+    <None Include="run_calibration_ui.ps1" />
+    <None Include="CALIBRATION_UI_TESTS.md" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,74 @@
+%YAML:1.0
+---
+# Structure example only. Tune every value with qualified images after the
+# five production cameras, lenses, lighting, and calibration target are fixed.
+# The target is a complete nxn symmetric grid shared by all five cameras.
+# Required integer in [3, 15], including even sizes; no missing-field fallback.
+grid_side_points: 5
+
+# Color, area, and
+# circularity filtering are always enabled; convexity and inertia are disabled.
+detection:
+  center:
+    blob_color: "dark"
+    minimum_threshold: 20.0
+    maximum_threshold: 240.0
+    threshold_step: 10.0
+    minimum_repeatability: 2
+    minimum_distance_px: 20.0
+    minimum_area_px2: 100.0
+    maximum_area_px2: 10000.0
+    minimum_circularity: 0.75
+
+  top_left:
+    blob_color: "dark"
+    minimum_threshold: 20.0
+    maximum_threshold: 240.0
+    threshold_step: 10.0
+    minimum_repeatability: 2
+    minimum_distance_px: 20.0
+    minimum_area_px2: 100.0
+    maximum_area_px2: 10000.0
+    minimum_circularity: 0.75
+
+  top_right:
+    blob_color: "dark"
+    minimum_threshold: 20.0
+    maximum_threshold: 240.0
+    threshold_step: 10.0
+    minimum_repeatability: 2
+    minimum_distance_px: 20.0
+    minimum_area_px2: 100.0
+    maximum_area_px2: 10000.0
+    minimum_circularity: 0.75
+
+  bottom_right:
+    blob_color: "dark"
+    minimum_threshold: 20.0
+    maximum_threshold: 240.0
+    threshold_step: 10.0
+    minimum_repeatability: 2
+    minimum_distance_px: 20.0
+    minimum_area_px2: 100.0
+    maximum_area_px2: 10000.0
+    minimum_circularity: 0.75
+
+  bottom_left:
+    blob_color: "dark"
+    minimum_threshold: 20.0
+    maximum_threshold: 240.0
+    threshold_step: 10.0
+    minimum_repeatability: 2
+    minimum_distance_px: 20.0
+    minimum_area_px2: 100.0
+    maximum_area_px2: 10000.0
+    minimum_circularity: 0.75
+
+solver:
+  ransac_threshold_mm: 0.05
+
+quality:
+  # Must be N-1 or N, where N = grid_side_points * grid_side_points.
+  minimum_used_points: 24
+  maximum_rms_error_mm: 0.03
+  maximum_residual_mm: 0.08

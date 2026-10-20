@@ -1,0 +1,83 @@
+%YAML:1.0
+---
+input_image:
+  width_px: 4024
+  height_px: 3036
+
+# These names identify camera roles, not corner positions in one image.
+# Replace x_px/y_px with the Mark search area of each camera.
+camera_rois:
+  top_left:
+    x_px: 0
+    y_px: 0
+    width_px: 200
+    height_px: 200
+  top_right:
+    x_px: 0
+    y_px: 0
+    width_px: 200
+    height_px: 200
+  bottom_right:
+    x_px: 0
+    y_px: 0
+    width_px: 200
+    height_px: 200
+  bottom_left:
+    x_px: 0
+    y_px: 0
+    width_px: 200
+    height_px: 200
+
+shape_matcher:
+  class_id: "mark"
+  template_file_pattern: "../../models/mark/%s_templ.yaml"
+  template_info_file: "../../models/mark/mark_info.yaml"
+
+  # This example assumes that the template image is the full 200 x 200 ROI.
+  template_image_width_px: 200
+  template_image_height_px: 200
+
+  detector:
+    num_features: 128
+    pyramid_t: [4, 8]
+    weak_threshold: 30.0
+    strong_threshold: 60.0
+
+  # Template build and online match parameters are fixed in MarkTypes.h.
+  # They are intentionally not part of the production configuration.
+
+# Lengths and center coordinates use the common physical-coordinate unit
+# produced by the four image_to_physical calibrations. These deliberately wide
+# first-stage ranges keep the flow open until qualified production samples are
+# available for tightening.
+quality:
+  mark_geometry:
+    top_length:
+      lower: 0.0
+      upper: 1000000000.0
+    right_length:
+      lower: 0.0
+      upper: 1000000000.0
+    bottom_length:
+      lower: 0.0
+      upper: 1000000000.0
+    left_length:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_left_to_bottom_right:
+      lower: 0.0
+      upper: 1000000000.0
+    diagonal_top_right_to_bottom_left:
+      lower: 0.0
+      upper: 1000000000.0
+
+  pose_result:
+    center_x:
+      lower: -1000000000.0
+      upper: 1000000000.0
+    center_y:
+      lower: -1000000000.0
+      upper: 1000000000.0
+    absolute_angle_deg:
+      lower: 0.0
+      upper: 90.0

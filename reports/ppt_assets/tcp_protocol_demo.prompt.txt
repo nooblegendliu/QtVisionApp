@@ -1,0 +1,22 @@
+Use case: ui-mockup. Create one polished high resolution 16:9 landscape screenshot-style graphic for a Chinese engineering PowerPoint about QtVisionApp TCP communication. A crisp flat desktop TCP protocol demonstration console, no physical laptop, no photo, no perspective. White and pale blue-gray industrial software UI, navy title bar, blue TX accents, teal RX accents, amber BUSY accents. Extremely legible accurate Chinese and monospaced JSON text. Render at about 2560x1440. This is an illustrative UI, NOT real test evidence: visibly label at top right “协议演示 · 示例数据” and footer “按项目协议构造的演示报文，非现场实测记录”. No claims of passed testing, no invented timings or percentages.
+
+Title “QtVisionApp | TCP 通信演示”.
+Top connection strip: “TCP Client → Vision Server” “127.0.0.1 : 9000” “UTF-8 / JSON Lines” “协议版本 1”.
+Main layout: left 72% width is message transcript titled “报文交互记录”, right 28% width is result summary. Large readable font. Show these EXACT eight sequential messages as independent transcript rows, TX and RX colored labels and small sequence numbers. JSON can be wrapped over two or three lines for readability; never omit any specified fields:
+01 TX {"version":1,"type":"prepareLocate","taskId":"1002","mode":"EDGE"}
+02 RX {"version":1,"type":"locatePrepared","taskId":"1002","mode":"EDGE"}
+03 TX {"version":1,"type":"prepareLocate","taskId":"1003","mode":"MARK_POINT"}
+04 RX {"version":1,"type":"prepareRejected","taskId":"1003","errorCode":"BUSY","message":"Vision task is busy.","activeTaskId":"1002"}
+05 TX {"version":1,"type":"queryStatus","sequence":3}
+06 RX {"version":1,"type":"statusReply","sequence":3,"applicationState":"READY","visionState":"READY","taskState":"RUNNING","activeTaskId":"1002","lastErrorCode":null}
+07 RX {"version":1,"type":"locateResult","taskId":"1002","mode":"EDGE","outcome":"OK","x":12.345,"y":-6.780,"r":0.125}
+08 TX {"version":1,"type":"resultAck","taskId":"1002"}
+
+Highlight row 04 in pale amber, row 07 in pale teal with subtle border.
+Right column top card title “定位结果”, large green “OK”, labels “taskId 1002” “模式 EDGE”, three large numbers in stacked readable rows “X 12.345”, “Y -6.780”, “R 0.125”. Do not invent coordinate units.
+Below that use three simple explanatory cards:
+“01 请求与结果关联” / “taskId 贯穿定位交互”
+“02 忙碌时拒绝新任务” / “任务 1003 返回 BUSY”
+“03 定位期间可查状态” / “任务 1002 返回 RUNNING”
+Bottom slim process strip: “定位请求 → 受理确认 → 结果返回 → 结果确认”.
+Prioritize exact JSON strings, no garbled text, generous padding, professional real software console aesthetic suitable to paste directly into a PPT, not a whole presentation slide.

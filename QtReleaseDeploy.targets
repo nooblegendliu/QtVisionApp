@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="DeployQtRuntimeRelease"
+          AfterTargets="Link"
+          Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PropertyGroup>
+      <QtReleaseDeployDir>$([System.IO.Path]::GetDirectoryName('$(TargetPath)'))</QtReleaseDeployDir>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(QtToolsPath)\windeployqt.exe')"
+           Text="Qt deployment failed: windeployqt.exe was not found under '$(QtToolsPath)'." />
+    <Error Condition="'$(QtReleaseDeployDir)' == ''"
+           Text="Qt deployment failed: unable to determine the output directory from '$(TargetPath)'." />
+    <Message Importance="High" Text="Deploying Qt Release runtime to $(QtReleaseDeployDir)" />
+    <Exec Command="&quot;$(QtToolsPath)\windeployqt.exe&quot; --release --no-compiler-runtime --dir &quot;$(QtReleaseDeployDir)&quot; &quot;$(TargetPath)&quot;" />
+  </Target>
+</Project>

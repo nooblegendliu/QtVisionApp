@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <OpenCvInstallDir Condition="'$(OpenCvInstallDir)'==''">$(SolutionDir)..\..\Libraries\OpenCV-4.12\build-vs\install</OpenCvInstallDir>
+    <EigenIncludeDir Condition="'$(EigenIncludeDir)'==''">$(SolutionDir)..\..\Libraries\vcpkg\installed\x64-windows\include\eigen3</EigenIncludeDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OpenCvLibraryName Condition="'$(Configuration)'=='Debug'">opencv_world4140d</OpenCvLibraryName>
+    <OpenCvLibraryName Condition="'$(Configuration)'!='Debug'">opencv_world4140</OpenCvLibraryName>
+    <IncludePath>$(EigenIncludeDir);$(OpenCvInstallDir)\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(OpenCvInstallDir)\x64\vc18\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>$(OpenCvLibraryName).lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Target Name="ValidateOpenCvInstallation" BeforeTargets="ClCompile">
+    <Error Condition="!Exists('$(OpenCvInstallDir)\include\opencv2\core.hpp')" Text="The configured OpenCV include directory is unavailable. Set OpenCvInstallDir to the OpenCV install root." />
+    <Error Condition="!Exists('$(EigenIncludeDir)\Eigen\Core')" Text="The configured Eigen include directory is unavailable. Set EigenIncludeDir to the Eigen include root." />
+    <Error Condition="!Exists('$(OpenCvInstallDir)\x64\vc18\lib\$(OpenCvLibraryName).lib')" Text="The OpenCV library required by $(Configuration)|$(Platform) is unavailable: $(OpenCvLibraryName).lib." />
+    <Error Condition="!Exists('$(OpenCvInstallDir)\x64\vc18\bin\$(OpenCvLibraryName).dll')" Text="The OpenCV runtime required by $(Configuration)|$(Platform) is unavailable: $(OpenCvLibraryName).dll." />
+  </Target>
+  <Target Name="CopyOpenCvRuntime" AfterTargets="Link" Condition="'$(ConfigurationType)'=='Application'">
+    <Copy SourceFiles="$(OpenCvInstallDir)\x64\vc18\bin\$(OpenCvLibraryName).dll" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
+</Project>

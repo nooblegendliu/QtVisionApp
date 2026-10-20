@@ -1,0 +1,104 @@
+{
+    "logging": {
+        "directory": "logs",
+        "level": "info",
+        "maximumFileMiB": 10,
+        "maximumFiles": 10
+    },
+    "resultDelivery": {
+        "acknowledgementIntervalMs": 999,
+        "maximumRetries": 3
+    },
+    "schemaVersion": 1,
+    "simulation": {
+        "edgeResult": {
+            "outcome": "OK",
+            "r": 1.25,
+            "x": 12.5,
+            "y": -3.2
+        },
+        "enabled": true,
+        "failFirstCapture": true,
+        "locateDelayMs": 300,
+        "markPointResult": {
+            "outcome": "NG"
+        }
+    },
+    "tcp": {
+        "heartbeatTimeoutMs": 3000,
+        "listenAddress": "127.0.0.1",
+        "maximumFrameBytes": 16384,
+        "port": 19090
+    },
+    "vision": {
+        "algorithmConfigPath": "../../../VisionAlgorithm/config/vision_algorithm.example.yaml",
+        "cameras": [
+            {
+                "exposureUs": 10000,
+                "gain": 0,
+                "model": "MV_CH250_90GM",
+                "role": "CENTER",
+                "serialNumber": "SIM_CENTER"
+            },
+            {
+                "exposureUs": 10000,
+                "gain": 0,
+                "model": "MV_CS120_10GM",
+                "role": "TOP_LEFT",
+                "serialNumber": "SIM_TOP_LEFT"
+            },
+            {
+                "exposureUs": 10000,
+                "gain": 0,
+                "model": "MV_CS120_10GM",
+                "role": "TOP_RIGHT",
+                "serialNumber": "SIM_TOP_RIGHT"
+            },
+            {
+                "exposureUs": 10000,
+                "gain": 0,
+                "model": "MV_CS120_10GM",
+                "role": "BOTTOM_RIGHT",
+                "serialNumber": "SIM_BOTTOM_RIGHT"
+            },
+            {
+                "exposureUs": 10000,
+                "gain": 0,
+                "model": "MV_CS120_10GM",
+                "role": "BOTTOM_LEFT",
+                "serialNumber": "SIM_BOTTOM_LEFT"
+            }
+        ],
+        "captureTimeoutMs": 1000,
+        "lightController": {
+            "channels": [
+                {
+                    "normalizedIntensity": 0.5,
+                    "outputSelector": "SIM_WHITE",
+                    "role": "WHITE_BACKLIGHT"
+                },
+                {
+                    "normalizedIntensity": 0.5,
+                    "outputSelector": "SIM_RED",
+                    "role": "COAXIAL_RED"
+                },
+                {
+                    "normalizedIntensity": 0.5,
+                    "outputSelector": "SIM_GREEN",
+                    "role": "COAXIAL_GREEN"
+                },
+                {
+                    "normalizedIntensity": 0.5,
+                    "outputSelector": "SIM_BLUE",
+                    "role": "COAXIAL_BLUE"
+                }
+            ],
+            "serialNumber": "SIM_LIGHT"
+        },
+        "productionTrigger": {
+            "activation": "RISING_EDGE",
+            "delayUs": 0,
+            "inputLine": "LINE0"
+        }
+    }
+}

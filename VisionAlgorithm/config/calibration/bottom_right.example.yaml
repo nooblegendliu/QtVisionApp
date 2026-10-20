@@ -1,0 +1,29 @@
+%YAML:1.0
+---
+# Mark 流程联调用占位标定，不是生产标定结果。
+image_width: 4024
+image_height: 3036
+
+# 单位内参与单位新内参配合全零畸变，使校正前后坐标保持不变。
+camera_matrix: !!opencv-matrix
+  rows: 3
+  cols: 3
+  dt: d
+  data: [ 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 ]
+distortion_coefficients: !!opencv-matrix
+  rows: 1
+  cols: 5
+  dt: d
+  data: [ 0.0, 0.0, 0.0, 0.0, 0.0 ]
+new_camera_matrix: !!opencv-matrix
+  rows: 3
+  cols: 3
+  dt: d
+  data: [ 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 ]
+
+# 当前阶段以单位矩阵代替实际外参/平面变换，像素坐标原样进入公共坐标。
+image_to_physical: !!opencv-matrix
+  rows: 3
+  cols: 3
+  dt: d
+  data: [ 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0 ]

@@ -1,0 +1,38 @@
+test_cast_.png 离线真实算法测试
+测试日期：2026-10-20
+
+输入：D:/CodeSpace/projects/ComputerVisionFlow/test_cast_.png
+原图：1136×680，8位三通道；测试入口以 OpenCV BGR2GRAY 转换为独立连续 CV_8UC1。
+测试前后原文件 SHA256 相同：
+19D97B40110500FCAADB639C9D58BC2612BF1DEBC91F739445D5B9ED2B73AACE
+
+入口：VisionAlgorithm::create() → ILocateAlgorithm::locate(EdgeAlgorithmInput)。
+链接项目已有 Release|x64 VisionAlgorithm.lib、VisionCore.lib 和统一 opencv_world4140。
+真实算法执行；未使用 SimulationRuntime 的预设定位结果。
+本次不经过相机、光源、VisionCore Locate、应用 UI 或 TCP；不构成完整设备链路验收。
+未修改生产源代码、生产示例配置或原图。
+
+配置：为此图单独设置八个卡尺 ROI，避开右侧和底部凸出区域及倒角。
+采用与图像尺寸一致的零畸变、单位 image_to_physical 测试标定。
+该标定仅用于测试，不是真实相机标定。输出 X/Y 数值按像素解释，不是设备毫米坐标。
+图像原点左上、X向右、Y向下；R为算法水平中线角度，单位度。
+算法超时保留500ms；梯度门槛20、平滑核5、每ROI32采样、至少12点及亚像素选项均沿用示例。
+质量门槛沿用示例宽范围；valid=true表示此次配置下算法输出有效，不表示工件通过生产尺寸验收。
+
+实际结果：10/10 次 valid=true。
+X=530.811298885381 px
+Y=331.460701672180 px
+R=-0.202804105493757 deg
+四条拟合边、四个交点均已输出，角点详见 output/results.json。
+同一输入连续10次输出完全一致；灰度输入逐像素未改变。
+独立同尺寸空白图对照返回正常NG。
+同一静态图重复运行的一致性不代表重复采图精度或真值定位精度。
+
+output/edge_result.png 为算法快照的确定性可视化，不是软件窗口截图：
+青色：配置ROI；绿色：实际拟合直线；橙色：四个角点；紫色：输出中心。
+run.log：实际运行输出；output/results.json：逐次结果、耗时和检查结果。
+
+复现（仓库根目录 PowerShell）：
+./reports/image_test_cast/run.ps1 -ImagePath 'D:/CodeSpace/projects/ComputerVisionFlow/test_cast_.png'
+重新编译入口（使用本机现有Visual Studio和项目库）：
+./reports/image_test_cast/build.cmd
